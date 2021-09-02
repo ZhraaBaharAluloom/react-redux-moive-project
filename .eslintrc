@@ -11,11 +11,12 @@
     "jest": true
 },
 "rules": {
-    "max-len": ["error", {"code": 200}],
+    "max-len": ["error", {"code": 300}],
     "no-console": "off",
     "prefer-promise-reject-errors": ["off"],
     "react/jsx-filename-extension": ["off"],
     "react/prop-types": ["warn"],
-    "no-return-assign": ["off"]
+    "no-return-assign": ["off"],
+    "camelcase":"off"
   }
 }
