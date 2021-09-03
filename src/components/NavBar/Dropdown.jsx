@@ -1,5 +1,6 @@
-import React , {useState} from 'react';
-// import { Link } from 'react-router-dom';
+import React , {useContext}from 'react';
+import { Link } from 'react-router-dom';
+import {GenreContext} from '../hooks/useContex';
 
 const genres= [
   {
@@ -81,22 +82,23 @@ const genres= [
 ]
 
 function Dropdown() {
-  const [genre, setGenre] = useState(null)
-  console.log("🚀 ~ file: Dropdown.jsx ~ line 89 ~ Dropdown ~ genre", genre)
-  
+  const [genre, setGenre] = useContext(GenreContext);
+  console.log("🚀 ~ file: Dropdown.jsx ~ line 86 ~ Dropdown ~ genre", genre)
+ 
   const handleClick = (genreId) => {
     setGenre(genreId)
   }
-
+  const list = genres.map((movie) => 
+    <p key={movie.id} role="presentation" onClick={() => handleClick(movie.id)}>
+      <Link  to="/movies" >
+        {movie.name}
+      </Link>
+    </p>
+  )
+  
   return (
     <>
-      {genres.map((movie) => 
-            <p key={movie.id} role="presentation" onKeyDown={() => handleClick(movie.id)} onClick={() => handleClick(movie.id) }>
-              {/* <Link  to="/" > */}
-                {movie.name}
-              {/* </Link> */}
-            </p>
-          )}
+     {list}
     </>
   );
 }
