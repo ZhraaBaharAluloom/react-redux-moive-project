@@ -82,7 +82,7 @@ const genres= [
 ]
 
 function Dropdown() {
-  const [genre, setGenre] = useContext(GenreContext);
+  const {genre, setGenre} = useContext(GenreContext);
   console.log("🚀 ~ file: Dropdown.jsx ~ line 86 ~ Dropdown ~ genre", genre)
  
   const handleClick = (genreId) => {
