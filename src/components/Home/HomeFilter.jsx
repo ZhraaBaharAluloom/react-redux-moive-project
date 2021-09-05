@@ -1,9 +1,7 @@
 import React from 'react';
 import { Dropdown } from "react-bootstrap";
 
-// import React , {useContext}from 'react';
 // import { Link } from 'react-router-dom';
-// import {GenreContext} from '../hooks/useContex';
 
 const options= [
     {name: "Popularity"},
