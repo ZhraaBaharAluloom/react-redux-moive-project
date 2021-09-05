@@ -1,5 +1,4 @@
 import React from 'react';
-import { GenreProvider } from './components/hooks/useContex';
 
 
 // Components
@@ -11,10 +10,8 @@ import Routes from './components/Routes/Routes';
 function App() {
   return (
     <>
-    <GenreProvider>
       <NavBar/>
       <Routes/>
-      </GenreProvider>
     </>
   );
 }
