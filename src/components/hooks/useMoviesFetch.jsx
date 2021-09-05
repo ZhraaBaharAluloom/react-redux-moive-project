@@ -4,9 +4,11 @@ import { useEffect, useState } from 'react';
 const useMoviesFetch = (url) => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [data, setData] = useState(null);
+ 
 
     // Fetching Data
     useEffect(() => {
+      const ac = new AbortController();
         try {
           const fetchData = async () => {
             await fetch(url)
@@ -21,9 +23,11 @@ const useMoviesFetch = (url) => {
           console.log('🚀 ~ file: useMovieFetch.js ~ line 20 ~ useEffect ~ error', error);
     
         }
+        return () => ac.abort(); 
       }, [url]);
     
     return { data, isLoaded };
 };
+
 
 export default useMoviesFetch;
