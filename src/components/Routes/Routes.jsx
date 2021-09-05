@@ -12,6 +12,9 @@ import About from '../About';
 
 const Routes = () => 
   <Switch>
+      <Route exact path='/movies/:movieId'>
+        <SingleMovie />
+        </Route>
       <Route exact path='/about'>
         <About />
         </Route>
@@ -21,9 +24,6 @@ const Routes = () =>
       <Route exact path='/movies'>
          <MovieList />
       </Route>
-      <Route exact path='/movie'>
-        <SingleMovie />
-        </Route>
       <Route exact path='/actors'>
         <Actors />
         </Route>
