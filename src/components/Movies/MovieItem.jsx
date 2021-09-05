@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 
 const  MovieItem = ({movie}) => {
-  const {title} = movie
+  const {title, id} = movie
   return(
     <>
-  <p>{title}</p>
+  <Link to={`/movies/${id}`}>{title}</Link >
 
   </>
   )
@@ -15,7 +16,8 @@ const  MovieItem = ({movie}) => {
 
 MovieItem.propTypes = {
   movie: PropTypes.shape({
-    title: PropTypes.string
+    title: PropTypes.string,
+    id: PropTypes.number,
     
   }).isRequired,
 }
