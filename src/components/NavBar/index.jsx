@@ -17,7 +17,7 @@ const NavBar = () => {
   const user = useSelector(state => state.user);
   return (
     <>
-      <Navbar bg="transparent">
+      <Navbar bg="transparent" className='navbar-custom'>
         <Container fluid>
           <Col className='ms-4'>
             <Link to='/' className='link-comp me-3'>
@@ -38,7 +38,7 @@ const NavBar = () => {
               {
                 user.photoURL
                 ? <div id='user-icon' style={{backgroundImage: `url('${user.photoURL}')`}} />
-                : <Link to='/sign'><FontAwesomeIcon icon={faUserCircle} size='lg' /></Link>
+                : <Link to='/sign' className='user-icon-anon'><FontAwesomeIcon icon={faUserCircle} size='lg' /></Link>
               }
             </Navbar.Text>
           </Col>

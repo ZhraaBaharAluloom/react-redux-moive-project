@@ -1,14 +1,19 @@
 import React from 'react';
-import HomeFilter from './HomeFilter';
+
+// styles
+import './style.css';
 
 // Components
+// import HomeFilter from './HomeFilter';
 import PopularMovies from './PopularMovies';
 import TrendingMovies from './TrenddingMovies';
+import ControlledCarousel from './Carousel';
 
 
 const Home = () => (
   <>
-    <HomeFilter/>
+    {/* <HomeFilter/> */}
+    <ControlledCarousel />
     <PopularMovies />
     <TrendingMovies/>
   </>

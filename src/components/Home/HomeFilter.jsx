@@ -23,14 +23,14 @@ const HomeFilter = () =>  {
   
   return (
     <Dropdown>
-    <Dropdown.Toggle variant="success" id="dropdown-basic">
-      Preference filter
-    </Dropdown.Toggle>
-  
-    <Dropdown.Menu>
-    {homeOptionList}
-    </Dropdown.Menu>
-  </Dropdown>
+      <Dropdown.Toggle variant="success" id="dropdown-basic">
+        Preference filter
+      </Dropdown.Toggle>
+    
+      <Dropdown.Menu>
+        {homeOptionList}
+      </Dropdown.Menu>
+    </Dropdown>
   );
 }
 
