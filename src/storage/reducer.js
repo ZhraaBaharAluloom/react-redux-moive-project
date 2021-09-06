@@ -24,6 +24,12 @@ export function fetchFilteredMovies(_movies) {
     payload: _movies,
   };
 }
+export function fetchActors(actors) {
+  return {
+    type: 'actors/fetch',
+    payload: actors,
+  };
+}
 
 const initValue = {
   user: {},
@@ -31,6 +37,7 @@ const initValue = {
   moviesFilter: {
     genre: 0,
     movies: [],
+    actors: [],
   },
 };
 
@@ -43,7 +50,9 @@ function reducer(state = initValue, action) {
     case 'genre/set':
       return { ...state, moviesFilter: { ...state.moviesFilter, genre: action.payload } };
     case 'movies/fetch':
-      return { ...state, moviesFilter: { ...state.moviesFilter, movies: action.payload || null } };
+      return { ...state, moviesFilter: { ...state.moviesFilter, movies: action.payload || [] } };
+    case 'actors/fetch':
+      return { ...state, moviesFilter: { ...state.moviesFilter, actors: action.payload || [] } };
     default:
       return state;
   }
