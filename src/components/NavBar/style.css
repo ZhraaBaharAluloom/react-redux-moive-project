@@ -41,8 +41,8 @@
 }
 
 .navbar-custom {
-  /* position: absolute;
-  z-index: 5; */
+  position: absolute;
+  z-index: 5;
   width: 100%;
   margin-bottom: 10px;
 }
