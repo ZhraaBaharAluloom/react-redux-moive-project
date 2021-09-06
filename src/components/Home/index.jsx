@@ -5,8 +5,10 @@ import { API_KEY } from '../hooks/APIs';
 
 
 // Components
+// import HomeFilter from './HomeFilter';
 import PopularMovies from './PopularMovies';
 import TrendingMovies from './TrenddingMovies';
+import ControlledCarousel from './Carousel';
 
 
 const Home = () => {

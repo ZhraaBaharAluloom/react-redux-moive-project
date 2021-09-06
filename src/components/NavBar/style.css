@@ -13,6 +13,7 @@
 
 .brand {
   font-size: 1.5rem;
+  color: #999999 !important;
 }
 
 .link-comp {
@@ -37,4 +38,17 @@
   height: 25px;
   background-position: center;
   background-size: cover;
+}
+
+.navbar-custom {
+  position: absolute;
+  z-index: 5;
+  width: 100%;
+}
+
+.user-icon-anon {
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: #eeeeee;
+  color: #222222;
 }
