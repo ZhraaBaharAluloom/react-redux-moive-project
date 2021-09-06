@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
+import HomeFilter from './HomeFilter';
+import useMoviesFetch from '../hooks/useMoviesFetch';
+import { API_KEY } from '../hooks/APIs';
 
-// styles
-import './style.css';
 
 // Components
 // import HomeFilter from './HomeFilter';
@@ -10,12 +11,34 @@ import TrendingMovies from './TrenddingMovies';
 import ControlledCarousel from './Carousel';
 
 
-const Home = () => (
+const Home = () => {
+  const [option, setOption] = useState("")
+  const handleOptionsClick = (name) => {
+    setOption(name)
+  }
+
+  const {data: selectedMoviesType, isLoaded } = useMoviesFetch(`https://api.themoviedb.org/3/movie/${option}?api_key=${API_KEY}&language=en-US&page=1`)
+
+  const selectedMoviesList = option !== "" && 
+  selectedMoviesType?.results?.map(_movie => <p key={_movie.id}>{_movie.title}</p>)
+  
+     
+     
+  if (!isLoaded) return <p> Loading ... </p>
+  return(
   <>
-    {/* <HomeFilter/> */}
-    <ControlledCarousel />
+ 
+   <HomeFilter option={option}
+    handleOptionsClick={handleOptionsClick} 
+  />
+    {option !== "" ? selectedMoviesList
+    :
+    <>
     <PopularMovies />
     <TrendingMovies/>
+    </>
+    }
+    
   </>
-)
+)}
 export default Home;
