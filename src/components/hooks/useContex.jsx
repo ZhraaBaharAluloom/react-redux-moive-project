@@ -2,18 +2,18 @@ import React, {createContext, useState} from 'react'
 import PropTypes from 'prop-types';
 
 
-export const GenreContext = createContext();
+export const SearchContext = createContext();
 
-export const GenreProvider = ({children = []})=>{
-    const [genre, setGenre] = useState(null);
-
+export const SearchProvider = ({children = ""})=>{
+    const [search, setSearch] = useState("")
+   
     return(
-        <GenreContext.Provider value={[genre, setGenre]}>
+        <SearchContext.Provider value={{search, setSearch}}>
             {children}
-        </GenreContext.Provider>
+        </SearchContext.Provider>
     )
     
 }
-GenreProvider.propTypes = {
-    children: PropTypes.node.isRequired   
+SearchProvider.propTypes = {
+    children: PropTypes.string.isRequired   
   }
