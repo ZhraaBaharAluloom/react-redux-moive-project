@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
-import HomeFilter from './HomeFilter';
 import useMoviesFetch from '../hooks/useMoviesFetch';
 import { API_KEY } from '../hooks/APIs';
 
 
 // Components
-// import HomeFilter from './HomeFilter';
+import HomeFilter from './HomeFilter';
 import PopularMovies from './PopularMovies';
 import TrendingMovies from './TrenddingMovies';
 import ControlledCarousel from './Carousel';
@@ -27,16 +26,17 @@ const Home = () => {
   if (!isLoaded) return <p> Loading ... </p>
   return(
   <>
- 
-   <HomeFilter option={option}
+    <ControlledCarousel />
+    <HomeFilter option={option}
     handleOptionsClick={handleOptionsClick} 
-  />
-    {option !== "" ? selectedMoviesList
-    :
-    <>
-    <PopularMovies />
-    <TrendingMovies/>
-    </>
+    />
+    {
+      option !== "" ? selectedMoviesList
+      :
+      <>
+      <PopularMovies />
+      <TrendingMovies/>
+      </>
     }
     
   </>
