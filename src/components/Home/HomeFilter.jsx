@@ -1,30 +1,28 @@
 import React from 'react';
 import { Dropdown } from "react-bootstrap";
+import PropTypes from 'prop-types';
 
 // import { Link } from 'react-router-dom';
 
 const options= [
-    {name: "Popularity"},
-    {name: "Release date"},
-    {name: "Top rated"},
-    {name: "Now playing"}, 
-    {name: "Upcoming"}
+    {name: "popular"},
+    {name: "top_rated"},
+    {name: "now_playing"}, 
+    {name: "upcoming"}
 ]
 
-const HomeFilter = () =>  {
+const HomeFilter = ({option, handleOptionsClick}) =>  {
  
-  const homeOptionList = options.map((option) => 
-  <Dropdown.Item  key={option.name} href={option.name}>
-      {/* <Link  to="/movies" > */}
-        {option.name}
-      {/* </Link> */}
+  const homeOptionList = options.map((_option) => 
+  <Dropdown.Item  key={_option.name} onClick={() => handleOptionsClick(_option.name)}>
+        {_option.name}
     </Dropdown.Item>
   )
   
   return (
     <Dropdown>
     <Dropdown.Toggle variant="success" id="dropdown-basic">
-      Preference filter
+      {option}
     </Dropdown.Toggle>
   
     <Dropdown.Menu>
@@ -32,6 +30,10 @@ const HomeFilter = () =>  {
     </Dropdown.Menu>
   </Dropdown>
   );
+}
+HomeFilter.propTypes = {
+  option: PropTypes.string.isRequired,
+  handleOptionsClick: PropTypes.func.isRequired,
 }
 
 export default HomeFilter;
