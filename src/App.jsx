@@ -5,6 +5,7 @@ import React from 'react';
 import NavBar from './components/NavBar'
 import Footer from './components/Footer';
 import Routes from './components/Routes/Routes';
+import { SearchProvider } from './components/hooks/useContex';
 
 
 

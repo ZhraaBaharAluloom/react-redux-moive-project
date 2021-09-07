@@ -1,5 +1,16 @@
 export const  API_KEY = `9c1bd422dc4c265552caa0ce7241a530`;
 
+// trailer videos
+export function movieTrailer(id){
+  const TRAILER = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}&language=en-US`
+  return TRAILER;
+}
+
+export function youtubePlayer(key){
+  const BASE_YOUTUBE = 'https://www.youtube.com/embed/';
+  return BASE_YOUTUBE + key;
+}
+
 // images
 export function imageApi(src, quality){
   const BASE_IMAGE = 'https://image.tmdb.org/t/p/';
@@ -10,7 +21,6 @@ export function imageApi(src, quality){
   }
   return `${BASE_IMAGE}/w${qualityLevel[quality]}${src}`
 }
-// export const 
 
 // Movies
 export const TRENDING_MOVIES= `https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`
