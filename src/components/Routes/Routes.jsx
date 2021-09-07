@@ -14,23 +14,23 @@ const Routes = () =>
   <Switch>
       <Route exact path='/movies/:movieId'>
         <SingleMovie />
-        </Route>
+      </Route>
+      <Route exact path='/actors/:actorId'>
+        <SingleActor />
+      </Route>
       <Route exact path='/about'>
         <About />
-        </Route>
+      </Route>
       <Route exact path='/sign'>
         <SignIn />
-        </Route>
+      </Route>
       <Route exact path='/movies'>
          <MovieList />
       </Route>
       <Route exact path='/actors'>
         <Actors />
-        </Route>
-      <Route exact path='/actor'>
-        <SingleActor/>
-        </Route>
-        <Route exact path='/'>
+      </Route>
+      <Route exact path='/'>
         <Home/>
       </Route>
   </Switch>
