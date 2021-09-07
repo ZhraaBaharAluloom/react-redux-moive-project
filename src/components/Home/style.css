@@ -4,3 +4,83 @@
   background-size: cover;
   background-position: center;
 }
+
+.cards {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  overflow-y: hidden;
+  padding: 20px 20px 50px 50px;
+}
+
+.card {
+  flex: 0 0 200px;
+  border: none;
+  width: 200px;
+  background-color: transparent;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.card::after {
+  content: attr(title);
+  padding: 20px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to top, black, transparent);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-size: larger;
+  color: white;
+  text-shadow: 0 0 10px darkgray;
+  top: 100%;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.card:hover::after {
+  top: 0;
+  opacity: 1;
+}
+
+.card::before {
+  content: attr(vote);
+  font-weight: 700;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: #f8d210;
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-shadow: 0 0 10px #fde986;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.card:hover::before {
+  width: 30px;
+  height: 30px;
+  top: 10px;
+  right: 10px;
+}
+
+.carousel::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  background-image: linear-gradient(to top, #171010, transparent);
+}
+
+.headers {
+  color: white;
+  margin-top: 100px;
+}
