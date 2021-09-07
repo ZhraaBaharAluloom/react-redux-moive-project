@@ -3,7 +3,7 @@ import React from 'react';
 
 // Components
 import NavBar from './components/NavBar'
-// import Footer from './components/Footer';
+import Footer from './components/Footer';
 import Routes from './components/Routes/Routes';
 import { SearchProvider } from './components/hooks/useContex';
 
@@ -16,7 +16,7 @@ function App() {
       <NavBar/>
       <Routes/>
       </SearchProvider> 
-      {/* <Footer/> */}
+      <Footer/>
     </>
   );
 }

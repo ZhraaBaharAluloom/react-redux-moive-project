@@ -1,45 +1,26 @@
-import React, {useState} from 'react';
-import useMoviesFetch from '../hooks/useMoviesFetch';
-import { API_KEY } from '../hooks/APIs';
+import React from 'react';
 
 
 // Components
-import HomeFilter from './HomeFilter';
-import PopularMovies from './PopularMovies';
-import TrendingMovies from './TrenddingMovies';
 import ControlledCarousel from './Carousel';
+import ListOfMovies from './listOfMovies';
+
+// API links
+import { TOP_RATED, POPULAR_MOVIES, TRENDING_MOVIES, NOW_PLAYING, UPCOMING } from '../hooks/APIs';
 
 
 const Home = () => {
-  const [option, setOption] = useState("popular")
-  const handleOptionsClick = (name) => {
-    setOption(name)
-  }
-
-  let isLoaded = false
-  let selectedMoviesType = [];
- ({data: selectedMoviesType, isLoaded } = useMoviesFetch(`https://api.themoviedb.org/3/movie/${option}?api_key=${API_KEY}&language=en-US&page=1`));
-  const selectedMoviesList = option !== "" && 
-  selectedMoviesType?.results?.map(_movie => <p key={_movie.id}>{_movie.title}</p>)
-  
-     
-     
-  if (!isLoaded) return <p> Loading ... </p>
+  console.log()
   return(
   <>
     <ControlledCarousel />
-    <HomeFilter option={option}
-    handleOptionsClick={handleOptionsClick} 
-    />
-    {
-      option !== "popular" ? selectedMoviesList
-      :
-      <>
-      <PopularMovies selectedMoviesType={selectedMoviesType.results}/>
-      <TrendingMovies/>
-      </>
-    }
-    
+    <div style={{margin: '0 10%'}}>
+      <ListOfMovies typeOfCategory={POPULAR_MOVIES} listTitle='Popular Movies' />
+      <ListOfMovies typeOfCategory={TRENDING_MOVIES} listTitle='Trending Movies' />
+      <ListOfMovies typeOfCategory={TOP_RATED} listTitle='Top Rated Movies' />
+      <ListOfMovies typeOfCategory={NOW_PLAYING} listTitle='Now Playing Movies' />
+      <ListOfMovies typeOfCategory={UPCOMING} listTitle='Upcoming Movies' />
+    </div>
   </>
 )}
 export default Home;
