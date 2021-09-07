@@ -4,11 +4,14 @@ import { Link } from 'react-router-dom';
 
 
 const  MovieItem = ({movie}) => {
-  const {title, id} = movie
+  const {title, id , poster_path} = movie
   return(
     <>
-    <p>  <Link to={`/movies/${id}`}>{title}</Link>
-</p>
+        <div> 
+          <Link to={`/movies/${id}`}>{title}</Link>
+          <img src={`https://www.themoviedb.org/t/p/w440_and_h660_face/${poster_path}`} alt={title}/>
+        </div>
+
 
   </>
   )
@@ -18,7 +21,8 @@ const  MovieItem = ({movie}) => {
 MovieItem.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string,
-    id: PropTypes.number
+    id: PropTypes.number,
+    poster_path: PropTypes.string,
     
   }).isRequired,
 }
