@@ -53,6 +53,7 @@
 
 .navbar-custom {
   position: absolute;
+  top: 0;
   z-index: 5;
   width: 100%;
   margin-bottom: 10px;

@@ -10,7 +10,6 @@ import useMoviesFetch from '../hooks/useMoviesFetch';
 const ListOfMovies = ({ typeOfCategory, listTitle }) => {
   const {data: importedMovies, isLoaded} = useMoviesFetch(typeOfCategory)
   if(!isLoaded) return <p> Loading ... </p>
-  console.log(importedMovies.results)
   return (
     <>
       <h1 className='headers'>{listTitle}</h1>

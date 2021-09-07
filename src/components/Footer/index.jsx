@@ -10,13 +10,15 @@ import { faFacebook, faInstagram, faGithub } from '@fortawesome/free-brands-svg-
 // media image
 import logo from '../../img/logo.png';
 
+export const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
+
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
+  console.log()
   return (
     <Container fluid className='container-fluid-footer'>
       <button onClick={scrollToTop} type='button' id='back-to-top'>back to top</button>

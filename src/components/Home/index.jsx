@@ -8,7 +8,6 @@ import ListOfMovies from './listOfMovies';
 // API links
 import { TOP_RATED, POPULAR_MOVIES, TRENDING_MOVIES, NOW_PLAYING, UPCOMING } from '../hooks/APIs';
 
-
 export default function Home(){
   console.log()
   return(

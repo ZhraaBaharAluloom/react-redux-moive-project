@@ -1,2 +1,24 @@
-.single-movie-wrapper {
+.container-movies {
+  margin-top: 75px;
+}
+
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 30px;
+}
+
+.grid-card {
+  box-shadow: 0 0 25px black;
+}
+
+.page-link {
+  background-color: #261f1f;
+  color: #ffe668;
+  border: none;
+}
+
+.page-item.active .page-link {
+  background-color: #ffe668;
+  color: #261f1f;
 }

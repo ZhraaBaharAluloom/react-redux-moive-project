@@ -1,4 +1,32 @@
+// store
+import { useSelector } from "react-redux";
+
 export const  API_KEY = `9c1bd422dc4c265552caa0ce7241a530`;
+
+export function discoveries(){
+  const filters = useSelector(state => state.moviesFilter)
+  let DISCOVERIES = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US`;
+  Object.keys(filters).forEach(key => {
+
+    if(key === 'genre' && filters[key] !== 0) {
+      DISCOVERIES += `&with_genres=${filters[key]}`;
+    };
+
+    if(key === 'sort_by') {
+      DISCOVERIES += `&sort_by=${filters[key]}`;
+    };
+    // possible values for sort:
+    // popularity.asc, popularity.desc, release_date.asc, release_date.desc, revenue.asc, revenue.desc, 
+    // primary_release_date.asc, primary_release_date.desc, original_title.asc, original_title.desc, 
+    // vote_average.asc, vote_average.desc, vote_count.asc, vote_count.desc
+
+    if(key === 'page') {
+      DISCOVERIES += `&page=${filters[key]}`;
+    };
+
+  })
+  return DISCOVERIES;
+}
 
 // trailer videos
 export function movieTrailer(id){

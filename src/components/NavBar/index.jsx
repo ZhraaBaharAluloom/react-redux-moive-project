@@ -1,5 +1,4 @@
-// import React from 'react';
-import React, { useContext} from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 // style
@@ -9,36 +8,46 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
 // state
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // media file
 import logo from '../../img/logo.png';
 
-// hook
-import { SearchContext } from '../hooks/useContex';
-
 // Components
 import Sidebar from './sidebar';
 
+// store
+import { setSearch } from '../../storage/reducer';
+
 const NavBar = () => {
+  const [keyword, setKeyword] = useState('');
+
+  const dispatch = useDispatch();
   const user = useSelector(state => state.user);
 
-  const {setSearch} = useContext(SearchContext)
- 
+  function handleSearchSubmit(event){
+    event.preventDefault();
+    dispatch(setSearch(keyword))
+  }
+
   return (
     <>
       <Navbar bg="transparent" className='navbar-custom'>
         <Container fluid>
-          <Col className='ms-4'>
+          <Col className='ms-4' lg={3} md={4} sm={5}>
             <Link to='/' className='me-3'>
               <Navbar.Brand className='brand me-0'><img src={logo} alt='logo' /></Navbar.Brand>
             </Link>
             <Link to="/movies" className="nav-links left link-comp">Movies</Link>
           </Col>
-          <Col lg={7} className='text-center'>
-            <Form>
-              {/* <Form.Control type="search" placeholder="Search" className='text-center nav-search-input' />  */}
-              <Form.Control type="search" placeholder="Search" className='text-center nav-search-input' onChange={(e) => setSearch(e.target.value)}/> 
+          <Col lg={7} md={6} sm={5} className='text-center'>
+            <Form onSubmit={(event) => handleSearchSubmit(event)}>
+              <Form.Control
+                type="search"
+                placeholder="Search"
+                className='text-center nav-search-input'
+                onChange={(event) => setKeyword(event.target.value)}
+              /> 
             </Form>
           </Col>
           <Col className='text-end me-4' style={{display: 'flex', justifyContent: 'flex-end'}}>

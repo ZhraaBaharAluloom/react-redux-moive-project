@@ -2,18 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+// APIs
+import { imageApi } from '../hooks/APIs';
 
-const  MovieItem = ({movie}) => {
+
+const MovieItem = ({movie}) => {
   const {title, id , poster_path} = movie
   return(
     <>
-        <div> 
-          <Link to={`/movies/${id}`}>{title}</Link>
-          <img src={`https://www.themoviedb.org/t/p/w440_and_h660_face/${poster_path}`} alt={title}/>
-        </div>
-
-
-  </>
+      <Link to={`/movies/${id}`} className='card' title={title} vote={movie.vote_average}> 
+        <img src={imageApi(poster_path, 'low')} variant='top' alt='poster' />
+      </Link>
+    </>
   )
   
 }
