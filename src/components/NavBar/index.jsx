@@ -10,6 +10,10 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
 // state
 import { useSelector } from 'react-redux';
+
+// media file
+import logo from '../../img/logo.png';
+
 // hook
 import { SearchContext } from '../hooks/useContex';
 
@@ -26,8 +30,8 @@ const NavBar = () => {
       <Navbar bg="transparent" className='navbar-custom'>
         <Container fluid>
           <Col className='ms-4'>
-            <Link to='/' className='link-comp me-3'>
-              <Navbar.Brand className='brand me-0'>Moviestan</Navbar.Brand>
+            <Link to='/' className='me-3'>
+              <Navbar.Brand className='brand me-0'><img src={logo} alt='logo' /></Navbar.Brand>
             </Link>
             <Link to="/movies" className="nav-links left link-comp">Movies</Link>
           </Col>
