@@ -1,7 +1,9 @@
 import React from 'react';
+import { Card, CardGroup } from 'react-bootstrap';
 import { useParams } from 'react-router';
 // import { useSelector } from 'react-redux';
 import useMoviesFetch from '../hooks/useMoviesFetch';
+import "./Styles.css"
 
 const imgPath = `https://www.themoviedb.org/t/p/w440_and_h660_face`
 const  SingleMoviePage = () => {
@@ -24,24 +26,43 @@ const  SingleMoviePage = () => {
       ({data: trailer, isLoaded} = useMoviesFetch(`https://api.themoviedb.org/3/movie/${movie?.id}/videos?api_key=9c1bd422dc4c265552caa0ce7241a530&language=en-US`));
    
    if(!isLoaded) return <p>Loading ...</p>
-   const {title, original_language, overview, poster_path, release_date, vote_count, vote_average} =  movie || {}
+   const {title, overview, poster_path, release_date, vote_count, vote_average} =  movie || {}
    const  officialTrailer = trailer !== null ? trailer.results?.find(_trailer => _trailer.official): {}
    const director = actors !== null ? actors.crew?.find(_crew => _crew.job === "Director") : {}
   return(
     <>
-  {!isLoaded? 
-   <p>Loading ...</p>:
-   <>
-  <p>{title}</p>
-  <p>{original_language}</p>
-  <p>{overview}</p>
-  <img  src={`${imgPath}${poster_path}`} alt={title}/>
+  {!isLoaded?    <p>Loading ...</p>:
+   <div className="single-movie-wrapper">
+  <Card style={{  display: "flex" , flexDirection: "row", width: "60%"}}>
+  <Card.Img src={`${imgPath}${poster_path}`} alt={title}/>
+  <Card.Body>
+    <Card.Title>{title}</Card.Title>
+    <Card.Text>
+    <p>{overview}</p>
   <p>{release_date}</p>
   <p>Votes: {vote_count}</p>
   <p>Rates: {vote_average}</p>
-  <hr />
+    </Card.Text>
+  </Card.Body>
+</Card>
+ 
 
   {/* Actors List */}
+  <CardGroup>
+  <Card>
+    <Card.Img variant="top" src="holder.js/100px160" />
+    <Card.Body>
+      <Card.Title>Card title</Card.Title>
+      <Card.Text>
+        This is a wider card with supporting text below as a natural lead-in to
+        additional content. This content is a little bit longer.
+      </Card.Text>
+    </Card.Body>
+    <Card.Footer>
+      <small className="text-muted">Last updated 3 mins ago</small>
+    </Card.Footer>
+  </Card>
+</CardGroup>
   <ul><h1>Actors: </h1>
       {actors?.cast?.slice(0, 5).map(actor => <li key={actor.id}>{actor.name}<img src={`${imgPath}${actor.profile_path}`} alt={actor.name}/></li>)}
   </ul>
@@ -59,7 +80,7 @@ const  SingleMoviePage = () => {
  <a href={`https://www.youtube.com/watch?v=${officialTrailer?.key}`} target="_blank" rel="noreferrer">
   Trailer
  </a>
- </> 
+ </div> 
  
  }
 
