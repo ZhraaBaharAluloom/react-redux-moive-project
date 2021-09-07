@@ -11,13 +11,14 @@ import ControlledCarousel from './Carousel';
 
 
 const Home = () => {
-  const [option, setOption] = useState("")
+  const [option, setOption] = useState("popular")
   const handleOptionsClick = (name) => {
     setOption(name)
   }
 
-  const {data: selectedMoviesType, isLoaded } = useMoviesFetch(`https://api.themoviedb.org/3/movie/${option}?api_key=${API_KEY}&language=en-US&page=1`)
-
+  let isLoaded = false
+  let selectedMoviesType = [];
+ ({data: selectedMoviesType, isLoaded } = useMoviesFetch(`https://api.themoviedb.org/3/movie/${option}?api_key=${API_KEY}&language=en-US&page=1`));
   const selectedMoviesList = option !== "" && 
   selectedMoviesType?.results?.map(_movie => <p key={_movie.id}>{_movie.title}</p>)
   
@@ -31,10 +32,10 @@ const Home = () => {
     handleOptionsClick={handleOptionsClick} 
     />
     {
-      option !== "" ? selectedMoviesList
+      option !== "popular" ? selectedMoviesList
       :
       <>
-      <PopularMovies />
+      <PopularMovies selectedMoviesType={selectedMoviesType.results}/>
       <TrendingMovies/>
       </>
     }
