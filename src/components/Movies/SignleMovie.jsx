@@ -1,5 +1,4 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 // import { useSelector } from 'react-redux';
@@ -16,9 +15,9 @@ const  SingleMoviePage = () => {
      let similarMovies = [];
      let trailer=[];
      ({data: movie, isLoaded} = useMoviesFetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=9c1bd422dc4c265552caa0ce7241a530&language=en-US`));
-      ({data: actors, isLoaded} = useMoviesFetch(`https://api.themoviedb.org/3/movie/${movie?.id}/credits?api_key=9c1bd422dc4c265552caa0ce7241a530&language=en-US/cast`));
-      ({data: similarMovies, isLoaded} = useMoviesFetch(`https://api.themoviedb.org/3/movie/${movie?.id}/similar?api_key=9c1bd422dc4c265552caa0ce7241a530&language=en-US&page=1`));
-      ({data: trailer, isLoaded} = useMoviesFetch(`https://api.themoviedb.org/3/movie/${movie?.id}/videos?api_key=9c1bd422dc4c265552caa0ce7241a530&language=en-US`));
+      ({data: actors, isLoaded} = useMoviesFetch(`https://api.themoviedb.org/3/movie/${movie? movie.id : 589754}/credits?api_key=9c1bd422dc4c265552caa0ce7241a530&language=en-US/cast`));
+      ({data: similarMovies, isLoaded} = useMoviesFetch(`https://api.themoviedb.org/3/movie/${movie? movie.id : 589754}/similar?api_key=9c1bd422dc4c265552caa0ce7241a530&language=en-US&page=1`));
+      ({data: trailer, isLoaded} = useMoviesFetch(`https://api.themoviedb.org/3/movie/${movie? movie.id : 589754}/videos?api_key=9c1bd422dc4c265552caa0ce7241a530&language=en-US`));
    
       const {title, overview, poster_path, release_date, vote_count, vote_average} =  movie || {};
       const  officialTrailer = trailer !== null ? trailer.results?.find(_trailer => _trailer.official): {};
@@ -28,18 +27,12 @@ const  SingleMoviePage = () => {
     <>
           {!isLoaded?    <p>Loading ...</p>:
           <div className="single-movie-wrapper">
-          <Card style={{  display: "flex" , flexDirection: "row", width: "60%"}}>
-          <Card.Img src={`${imgPath}${poster_path}`} alt={title}/>
-          <Card.Body>
-            <Card.Title>{title}</Card.Title>
-            <Card.Text>
+          <img src={`${imgPath}${poster_path}`} alt={title}/>       
+        <p>{title}</p>
             <p>{overview}</p>
           <p>{release_date}</p>
           <p>Votes: {vote_count}</p>
           <p>Rates: {vote_average}</p>
-            </Card.Text>
-          </Card.Body>
-        </Card>
         
 
           {/* Actors List */}
