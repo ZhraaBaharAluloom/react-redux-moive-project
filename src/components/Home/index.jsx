@@ -9,7 +9,7 @@ import ListOfMovies from './listOfMovies';
 import { TOP_RATED, POPULAR_MOVIES, TRENDING_MOVIES, NOW_PLAYING, UPCOMING } from '../hooks/APIs';
 
 
-const Home = () => {
+export default function Home(){
   console.log()
   return(
   <>
@@ -23,4 +23,3 @@ const Home = () => {
     </div>
   </>
 )}
-export default Home;
