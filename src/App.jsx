@@ -11,8 +11,9 @@ import Routes from './components/Routes/Routes';
 function App() {
   return (
     <>
-      <NavBar/>
-      <Routes/>
+      <SearchProvider> 
+        <NavBar/>
+        <Routes/>
       </SearchProvider> 
       <Footer/>
     </>
