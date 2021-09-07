@@ -54,7 +54,7 @@
 }
 
 .link-footer-outer:hover {
-  border-left: 10px solid white;
+  border-left: 10px solid #f8d210;
 }
 
 .social-style {
@@ -69,4 +69,21 @@
   justify-content: space-between;
   width: 80%;
   margin-top: 10px;
+}
+
+#back-to-top {
+  position: absolute;
+  float: right;
+  width: 80px;
+  height: 60px;
+  background-color: #f8d210;
+  right: 50px;
+  transform: translateY(-35px);
+  border: none;
+  transition: 0.2s;
+}
+
+#back-to-top:hover {
+  box-shadow: 0 0 10px #ffe668;
+  transform: translateY(-35px) rotate(-7deg);
 }

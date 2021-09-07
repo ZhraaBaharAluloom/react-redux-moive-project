@@ -5,21 +5,21 @@ import { Link } from 'react-router-dom';
 // style
 import "./styles.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faInstagram, faGithub} from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 // media image
 import logo from '../../img/logo.png';
 
 const Footer = () => {
-  // const scrollToTop = () => {
-  //   window.scrollTo({
-  //     top: 0,
-  //     behavior: "smooth",
-  //   });
-  // };
-  console.log()
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <Container fluid className='container-fluid-footer'>
+      <button onClick={scrollToTop} type='button' id='back-to-top'>back to top</button>
       <Container className='footer-wrapper'>
         <Col className="sitemap footer-col">
           <h3 className='header-footer'>Sitemap</h3>
@@ -74,7 +74,7 @@ const Footer = () => {
         </Col>
       </Container>
     </Container>
-    );
-  };
+  );
+};
 
 export default Footer;

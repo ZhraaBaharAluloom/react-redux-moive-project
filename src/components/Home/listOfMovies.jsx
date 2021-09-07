@@ -1,5 +1,7 @@
 import React from 'react';
 
+// hooks
+import { Link } from 'react-router-dom';
 
 // Hooks
 import { imageApi } from '../hooks/APIs';
@@ -16,9 +18,9 @@ const ListOfMovies = ({ typeOfCategory, listTitle }) => {
         {importedMovies.results.map(movie => {
           const movieName = movie.original_title || movie.original_name;
           return (
-            <div key={movie.id} className='card' title={movieName} vote={movie.vote_average}>
+            <Link to={`/movies/${movie.id}`} key={movie.id} className='card' title={movieName} vote={movie.vote_average}>
               <img src={imageApi(movie.poster_path, 'low')} variant='top' alt='poster' />
-            </div>
+            </Link>
           )
         })}
       </div>

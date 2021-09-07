@@ -22,6 +22,11 @@
   cursor: pointer;
   overflow: hidden;
   border-radius: 20px;
+  color: black !important;
+}
+
+.card:hover img {
+  filter: blur(1px);
 }
 
 .card::after {
@@ -61,6 +66,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
   transition: 0.3s;
 }
 
