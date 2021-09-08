@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 
 
 // Hooks
@@ -25,4 +27,8 @@ const ListOfMovies = ({ typeOfCategory, listTitle }) => {
   );
 };
 
+ListOfMovies.propTypes = {
+  typeOfCategory: PropTypes.string.isRequired,
+   listTitle: PropTypes.string.isRequired,
+}
 export default ListOfMovies;
